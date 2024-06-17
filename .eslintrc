@@ -1,0 +1,25 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    // Your custom ESLint rules here
+    "@typescript-eslint/no-explicit-any": "off",
+    "no-unused-vars": "error" // Activer la règle 'no-unused-vars' avec un niveau d'erreur
+  }
+}
