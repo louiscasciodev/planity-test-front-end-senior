@@ -19,7 +19,6 @@
   ],
   "rules": {
     // Your custom ESLint rules here
-    "@typescript-eslint/no-explicit-any": "off",
-    "no-unused-vars": "error" // Activer la règle 'no-unused-vars' avec un niveau d'erreur
+    "no-unused-vars": "off" // Activer la règle 'no-unused-vars' avec un niveau d'erreur
   }
 }

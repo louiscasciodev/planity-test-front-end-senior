@@ -4,31 +4,20 @@ import { CalendarEventProps } from "../types";
 
 const CalendarEvent: React.FC<CalendarEventProps> = ({
   event,
-  containerWidth,
 }) => {
-  const { id, start, duration } = event;
-  const startHour = parseInt(start.split(":")[0], 10);
-  const startMinute = parseInt(start.split(":")[1], 10);
-  // const endHour = startHour + Math.floor(duration / 60);
-  // const endMinute = startMinute + (duration % 60);
+  const { id, start, end } = event;
 
-  const startPosition = ((startHour * 60 + startMinute) / (24 * 60)) * 100;
-  const eventHeight = (duration / (24 * 60)) * 100;
-
+  // Dynamic style to position the event div as absolute
   const style = {
-    left: 0,
-    width: `${containerWidth}px`,
-    top: `${startPosition}%`,
-    height: `${eventHeight}%`,
-    border: `1px solid black`,
+    top: `${event.startPosition}%`,
+    left: `${event.leftPosition}px`,
+    width: `${event.containerWidth}px`,
+    height: `${event.eventHeight}%`,
   };
-  console.log("containerWidth", containerWidth)
-  console.log("startPosition", startPosition)
-  console.log("eventHeight", eventHeight)
 
   return (
     <div className="event" style={style}>
-      {id}
+      <span style={{color: 'red', paddingRight: '10px' }}>{id}</span><span>{start} - {end}</span>
     </div>
   );
 };

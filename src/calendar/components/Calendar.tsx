@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 //* Components
 import CalendarEvent from "./CalendarEvent";
 //* Libs
-import { groupOverlappingEvents } from "../eventLogic";
-// import { CalendarProps } from "../types";
+import { groupOverlappingEvents } from "../logic/algo";
+import { CalendarProps } from "../types";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const Calendar: React.FC<any> = ({ events }) => {
-
+const Calendar: React.FC<CalendarProps> = ({ events }) => {
+  
   const [containerWidth, setContainerWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -16,14 +15,12 @@ const Calendar: React.FC<any> = ({ events }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const overlappingEvents = groupOverlappingEvents(events)
-  console.log(overlappingEvents)
+  const overlappingEvents = groupOverlappingEvents(events, containerWidth)
 
   return (
-    <div className="calendar-container">
-      <div></div>
-      {overlappingEvents.map((group, index) => (
-        <div key={index} className="event-group">
+    <div className="calendar-container" >
+       {overlappingEvents.map((group, index) => (
+        <div key={index} className="event-group" >
           {group.map((event) => (
             <CalendarEvent
               key={event.id}
@@ -32,7 +29,7 @@ const Calendar: React.FC<any> = ({ events }) => {
             />
           ))}
         </div>
-      ))}
+      ))} 
     </div>
   );
 };
